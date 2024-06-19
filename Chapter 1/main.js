@@ -8,7 +8,7 @@ scene.background = new THREE.TextureLoader().load("../bg.jpg");
 const camera = new THREE.PerspectiveCamera(75, innerWidth / innerHeight, 0.1, 1000);
 
 // create a cube
-var cubeGeometry = new THREE.TorusGeometry(4);
+var cubeGeometry = new THREE.TorusGeometry(6, 2.0, 16);
 
 var pm = new THREE.PointsMaterial();
 pm.map = new THREE.TextureLoader().load("../cake.png");
@@ -74,11 +74,11 @@ context = new AudioContext();
 // setup a analyzer
 analyser = context.createAnalyser();
 analyser.smoothingTimeConstant = 0.4;
-analyser.fftSize = 64;
+analyser.fftSize = 1024;
 
 analyser2 = context.createAnalyser();
 analyser2.smoothingTimeConstant = 0.4;
-analyser2.fftSize = 64;
+analyser2.fftSize = 1024;
 
 // create a buffer source node
 sourceNode = context.createBufferSource();
@@ -100,18 +100,16 @@ context = new AudioContext();
 const ambientLight = new THREE.AmbientLight(0xffffff, 3);
 scene.add(ambientLight);
 
-const hemisphereLight = new THREE.HemisphereLight(0xeeeeee, 0xffffff);
-hemisphereLight.intensity = 1.1;
-scene.add(hemisphereLight)
-
-const sphereGeo = new THREE.SphereGeometry(6, 100);
+const sphereGeo = new THREE.SphereGeometry(6, 10);
 const sphereMat = new THREE.MeshStandardMaterial({
-    color: 0xffffff,
+    color: "yellow",
     side: THREE.DoubleSide,
     map: new THREE.TextureLoader().load("../cake2.png")
 });
 const sphere = new THREE.Mesh(sphereGeo, sphereMat);
-sphere.position.x = 3;
+sphere.position.x = 1;
+sphere.material.transparent = true;
+sphere.rotation.y = -0.5 * Math.PI;
 sphere.visible = true;
 
 function getAverageVolume(array) {
@@ -170,7 +168,7 @@ function onError(e) {
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.render(scene, camera);
-sphere.addEventListener("click", function(){alert()})
+
 document.body.appendChild(renderer.domElement);
 
 renderer.domElement.setAttribute("class", "background");
@@ -183,6 +181,7 @@ function render() {
     const intersects = rayCast.intersectObjects(scene.children);
     for (let i = 0; i < intersects.length; i++){
         if(intersects[i].object.id === sphereId) 
+            console.log(intersects[i].object.rotation)
             intersects[i].object.material.color.set(0xffffff)
     }
     renderer.render(scene, camera);
