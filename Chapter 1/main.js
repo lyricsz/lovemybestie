@@ -180,8 +180,9 @@ function render() {
     rayCast.setFromCamera(mousePosition, camera);
     const intersects = rayCast.intersectObjects(scene.children);
     for (let i = 0; i < intersects.length; i++){
-        if(intersects[i].object.id === sphereId) 
-            console.log(intersects[i].object.rotation)
+        if(intersects[i].object.id === sphereId)
+            
+            //
             intersects[i].object.material.color.set(0xffffff)
     }
     renderer.render(scene, camera);
