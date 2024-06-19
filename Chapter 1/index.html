@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no maximum-scale=1, viewport-fit=cover" >
+    <title>ThreeJS Test</title>
+    <link rel="stylesheet" href="styles.css" />
+    <meta name="application-name" content="App Name">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link rel="manifest" href="manifest.json">
+    <meta name="msapplication-starturl" content="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#">
+    <meta name="msapplication-TileColor" content="#">
+    <meta name="msapplication-config" content="browserconfig.xml">
+    <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#ffffff">
+    <link rel="shortcut icon" href="favicon.ico">
+</head>
+<body style="touch-action: none;">
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "../three.module.min.js",
+                "orbitcontrols": "../OrbitControls.js"
+            }
+        }
+    </script>
+ 
+    <h1>🎂Happy Birthday🎂, Friend</h1>
+    <p>Happy Birthday to you, My Best Friend.<br>
+       I'm so grateful for all the adventures that we've shared.<br>
+       Your kindness and support means the world to me.<br>
+       Here's to another incredible year of friendship and making more unforgettable moments. <br>
+       Cheers to you on your special day. <br>
+       Happy Birthday, Friend.
+    </p>
+    <div style="position: absolute; width: 100%; height: 100%; left: 0; top: 0; background-color: black; z-index: 10;" id="overlay">
+        <button style="position: relative; top: 50%; left: 50%; transform: translate(-50%, -50%);" id="startBtn" onclick="start()">Click ME!</button>
+    </div>
+    <div>
+        <canvas id="canvas2">Canvas not supported</canvas>
+    </div>
+    <script type="module" src="./main.js"></script>
+    <script>
+        
+
+    </script>
+</body>
+</html>
