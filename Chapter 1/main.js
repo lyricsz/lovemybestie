@@ -194,7 +194,7 @@ function render() {
 
 function start(){
     document.getElementById("overlay").style.display = "none";
-    window.screen.orientation = "landscape";
+    window.screen.orientation.lock("landscape-primary")
     loadSound("../neo.mp3")
     renderer.setAnimationLoop(render);
     scene.add(sphere);
